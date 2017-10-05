@@ -27,3 +27,9 @@ airmon-ng start wlan0
 airodump-ng wlan0mon
 airbase-ng -a myrouterbissd --essid "Type the target name to clone the SID" -c channel wlan0mon
 Wireshark filter to AP, select wlan0mon -> stop de traffict
+
+
+//Fen wifi cracker
+open the app
+select the interface available
+booton right select dict file

